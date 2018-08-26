@@ -17,9 +17,8 @@ gem 'rack-cors'
 gem 'rack-attack'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-
 # Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 3.0'
+gem 'redis', '~> 4.0'
 # Result pagination
 gem 'will_paginate', '~> 3.1.0'
 # Authorization
@@ -39,8 +38,6 @@ gem 'knock', '~> 2.1', '>= 2.1.1'
 # Serializer json
 gem 'active_model_serializers'
 
-# Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
 group :test do
   # Generate record based in a model
   gem 'factory_bot_rails', "~> 4.0"

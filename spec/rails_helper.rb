@@ -30,7 +30,11 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
 RSpec.configure do |config|
+  # Require all all suport files
+  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -60,11 +64,9 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   # Custom json helpers
-  config.include Requests::JsonHelpers, type: :request
+  config.include Request::JsonHelpers, type: :request
   # Custom Header helpers
-  config.include Requests::HeaderHelpers, type: :request
+  config.include Request::HeaderHelpers, type: :request
   # Custom Serializer helpers
-  config.include Requests::SerializerHelpers, type: :request
-
-  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+  config.include Request::SerializerHelpers, type: :request
 end

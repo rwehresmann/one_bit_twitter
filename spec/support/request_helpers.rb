@@ -1,4 +1,4 @@
-module Requests
+module Request
 	module JsonHelpers
 		def expect_status(expectation)
 			expect(response.status).to eql(expectation)

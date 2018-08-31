@@ -29,9 +29,8 @@ RSpec.describe "Api::V1::Tweets", type: :request do
         expect(json.count).to eql(remaining)
       end
 
-      # Verifique se os tweets que são retweets possuem os tweets originais associados
-      xit 'associates the original tweet when does a retweet' do
-        retweet = Tweet.second(tweet_original: Tweet.first)
+      it 'associates the original tweet when does a retweet' do
+        Tweet.second.update(tweet_original: Tweet.first)
         get "/api/v1/tweets?user_id=#{user.id}&page=1", headers: header_with_authentication(user)
 
         expect(json).to eql(each_serialized(Api::V1::TweetSerializer, user.tweets[0..14]))

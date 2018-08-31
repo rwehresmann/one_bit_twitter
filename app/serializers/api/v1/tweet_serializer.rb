@@ -24,7 +24,13 @@ module Api
       end
 
       def liked
-        object.liked_by @current_user
+        (current_user)? (current_user.liked? object) : false
+      end
+
+      private
+
+      def current_user
+        scope
       end
     end
   end

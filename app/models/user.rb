@@ -18,4 +18,14 @@ class User < ApplicationRecord #>
     :name,
     :email
   )
+
+  def timeline
+    timeline = tweets.map { |tweet| tweet }
+
+    all_following.each do |user|
+      timeline += user.tweets.map { |tweet| tweet }
+    end
+
+    timeline.sort_by!(&:created_at).reverse
+  end
 end

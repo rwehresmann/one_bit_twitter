@@ -24,3 +24,9 @@
 
 # RSpec
 .rspec
+
+# Ignore Cloudinary credentials file.
+/config/cloudinary.yml
+
+# Ignore uploaded content.
+public/uploads/*

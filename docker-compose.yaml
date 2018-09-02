@@ -18,6 +18,7 @@ services:
     depends_on:
       - "postgres"
       - "redis"
+      - "elasticsearch"
     build: .
     command: bash start.sh
     ports:
@@ -27,6 +28,9 @@ services:
       - app-gems:/app-gems
     environment:
       ELASTICSEARCH_URL: elasticsearch:9200
+    stdin_open: true
+    tty: true
+
 
   jobs:
     depends_on:
@@ -42,6 +46,7 @@ services:
     environment:
       ELASTICSEARCH_URL: elasticsearch:9200
 
+      
   elasticsearch:
     image: "elasticsearch:5"
     ports:
